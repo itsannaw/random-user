@@ -29,25 +29,32 @@ function App() {
           This is a web application for generating fake (random) user data.
         </span>
       </div>
-      <div className="flex justify-center mt-[20px]">
-        <FormControl size="small" sx={{ m: 1, minWidth: 300 }}>
-          <InputLabel id="demo-simple-select-autowidth-label" color="success">
-            Country
-          </InputLabel>
-          <Select
-            labelId="demo-simple-select-autowidth-label"
-            id="demo-simple-select-autowidth"
-            // value={age}
-            // onChange={handleChange}
-            autoWidth
-            label="Country"
-            color="success"
-          >
-            <MenuItem value={10}>USA</MenuItem>
-            <MenuItem value={21}>Poland</MenuItem>
-            <MenuItem value={22}>Turkish</MenuItem>
-          </Select>
-        </FormControl>
+      <div className="flex justify-center max-w-[800px] gap-[20px] mx-auto items-center mt-[20px]">
+        <div className="flex ">
+          <FormControl size="small" sx={{ m: 1, minWidth: 200 }}>
+            <InputLabel id="demo-simple-select-autowidth-label" color="success">
+              Country
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-autowidth-label"
+              id="demo-simple-select-autowidth"
+              // value={age}
+              // onChange={handleChange}
+              autoWidth
+              label="Country"
+              color="success"
+            >
+              <MenuItem value={10}>USA</MenuItem>
+              <MenuItem value={21}>Poland</MenuItem>
+              <MenuItem value={22}>Turkish</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+        <div>
+          <LoadingButton variant="contained" size="" color="success">
+            Export to CSV
+          </LoadingButton>
+        </div>
       </div>
 
       <div className="border rounded-md max-w-[1000px] mx-auto pb-[25px]">
