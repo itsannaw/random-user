@@ -106,7 +106,7 @@ const charSets = {
 const maxStrLength = 35;
 const minStrLength = 5;
 
-export function deleteSymbol(str) {
+function deleteSymbol(str) {
   let array = str.split("");
   array.splice(
     faker.helpers.arrayElement(
@@ -117,29 +117,20 @@ export function deleteSymbol(str) {
   return array.join("");
 }
 
-export function addSymbol(str, region, bool) {
+function addSymbol(str, region, isNumber) {
   let array = str.split("");
-  if (bool) {
-    array.splice(
-      faker.helpers.arrayElement(
-        Array.from({ length: array.length }, (_, i) => i)
-      ),
-      0,
-      faker.helpers.arrayElement(charSets.num)
-    );
-  } else {
-    array.splice(
-      faker.helpers.arrayElement(
-        Array.from({ length: array.length }, (_, i) => i)
-      ),
-      0,
-      faker.helpers.arrayElement(charSets[region])
-    );
-  }
+  let symbol = isNumber ? charSets.num : charSets[region];
+  array.splice(
+    faker.helpers.arrayElement(
+      Array.from({ length: array.length }, (_, i) => i)
+    ),
+    0,
+    faker.helpers.arrayElement(symbol)
+  );
   return array.join("");
 }
 
-export function swapSymbol(str) {
+function swapSymbol(str) {
   let array = str.split("");
   let random = faker.helpers.arrayElement(
     Array.from({ length: array.length - 1 }, (_, i) => i + 1)
@@ -150,7 +141,7 @@ export function swapSymbol(str) {
   return array.join("");
 }
 
-export function randomError(str, region, bool) {
+function randomError(str, region, bool) {
   let arrayError = [
     deleteSymbol(str),
     addSymbol(str, region, bool),
@@ -164,8 +155,7 @@ export function randomError(str, region, bool) {
   return randomError;
 }
 
-function makeMistakes(str, region, bool, count, seed) {
-  faker.seed(seed);
+function makeMistakes(str, region, bool, count) {
   let countMistake = Math.trunc(count);
   let prob = count - countMistake;
 
