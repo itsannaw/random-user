@@ -4,18 +4,14 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  Slider,
   TextField,
 } from "@mui/material";
 import { useState } from "react";
 import FakeUsers from "./components/FakeUsers";
 import { CSVLink } from "react-csv";
-
-const min = 0;
-const max = 1000;
+import ErrorFieldSlider from "./components/ErrorFieldSlider";
 
 function App() {
-  const [value, setValue] = useState();
   const [currentSeed, setCurrentSeed] = useState(123);
   const [list, setList] = useState([]);
   const [region, setRegion] = useState("pl");
@@ -109,46 +105,7 @@ function App() {
           </div>
         </div>
       </div>
-
-      <div className="border rounded-md max-w-[1000px] mx-auto pb-[25px] mt-[5px]">
-        <div className="flex mt-[20px] justify-center gap-[40px] items-center mx-auto max-w-[800px]">
-          <span className="flex text-[16px] text-center font-semibold tracking-wide">
-            Emulation of data <br /> entry errors
-          </span>
-          <div className="flex max-w-[200px]">
-            <TextField
-              color="success"
-              size="small"
-              fullWidth
-              defaultValue={0}
-              type="number"
-              inputProps={{ min, max }}
-              value={value}
-              onChange={(e) => {
-                let value = parseInt(e.target.value, 10);
-
-                if (value > max) value = max;
-                if (value < min) value = min;
-
-                setValue(value);
-              }}
-              variant="outlined"
-            />
-          </div>
-          <Slider
-            className="flex max-w-[180px] justify-center"
-            color="success"
-            defaultValue={0}
-            aria-label="Default"
-            valueLabelDisplay="auto"
-            min={0}
-            max={10}
-            step={0.25}
-            slots="input"
-            size="small"
-          />
-        </div>
-      </div>
+      <ErrorFieldSlider />
       <FakeUsers setList={setList} selectedRegion={region} seed={currentSeed} />
     </>
   );
