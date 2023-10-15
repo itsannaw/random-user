@@ -1,15 +1,12 @@
 import { Slider, TextField } from "@mui/material";
-import { useState } from "react";
 
-const ErrorFieldSlider = () => {
+const ErrorFieldSlider = ({ errorField, onErrorFieldChange }) => {
   const min = 0;
   const max = 1000;
   const sliderMaxValue = 10;
 
-  const [value, setValue] = useState(0);
-
   const handleSliderChange = (event, newValue) => {
-    setValue(newValue); // Обновляем значение в поле ввода
+    onErrorFieldChange(newValue);
   };
 
   const handleInputChange = (event) => {
@@ -17,7 +14,7 @@ const ErrorFieldSlider = () => {
     if (newValue > max) newValue = max;
     if (newValue < min) newValue = min;
 
-    setValue(newValue); // Обновляем значение в слайдере
+    onErrorFieldChange(newValue);
   };
 
   return (
@@ -31,7 +28,7 @@ const ErrorFieldSlider = () => {
             type="number"
             size="small"
             color="success"
-            value={value}
+            value={errorField}
             onChange={handleInputChange}
             min={min}
             max={max}
@@ -41,7 +38,7 @@ const ErrorFieldSlider = () => {
           className="flex max-w-[180px] justify-center"
           color="success"
           defaultValue={0}
-          value={value}
+          value={Number(errorField)}
           onChange={handleSliderChange}
           aria-label="Default"
           valueLabelDisplay="auto"

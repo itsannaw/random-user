@@ -15,12 +15,14 @@ function App() {
   const [currentSeed, setCurrentSeed] = useState(123);
   const [list, setList] = useState([]);
   const [region, setRegion] = useState("pl");
+  const [errorField, setErrorField] = useState(0);
+
   const handleSeedChange = (e) => {
     const newSeed = parseInt(e.target.value, 10);
     setCurrentSeed(newSeed);
   };
   const generateRandomSeed = () => {
-    const randomSeed = Math.floor(Math.random() * 1000000) + 1;
+    const randomSeed = Math.floor(Math.random() * 100000000) + 1;
     return randomSeed;
   };
   const handleRandomSeed = () => {
@@ -31,6 +33,7 @@ function App() {
     setRegion(event.target.value);
     setList([]);
   };
+
   return (
     <>
       <div className="flex flex-col justify-center text-center mt-[20px] gap-[10px]">
@@ -105,8 +108,16 @@ function App() {
           </div>
         </div>
       </div>
-      <ErrorFieldSlider />
-      <FakeUsers setList={setList} selectedRegion={region} seed={currentSeed} />
+      <ErrorFieldSlider
+        errorField={errorField}
+        onErrorFieldChange={setErrorField}
+      />
+      <FakeUsers
+        setList={setList}
+        selectedRegion={region}
+        seed={currentSeed}
+        mistakesCount={errorField}
+      />
     </>
   );
 }
