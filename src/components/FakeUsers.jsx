@@ -37,21 +37,27 @@ const FakeUsers = ({ seed, selectedRegion, setList, mistakesCount }) => {
             fakerInstance.person.fullName(),
             selectedRegion,
             false,
-            mistakesCount
+            mistakesCount,
+            seed
           ),
           randomAddress: makeMistakes(
             fakerInstance.location.streetAddress(),
             selectedRegion,
             false,
-            mistakesCount
+            mistakesCount,
+            seed
           ),
-          randomPhone: makeMistakes(fakerInstance.phone.number(), selectedRegion,
-          true,
-          mistakesCount),
+          randomPhone: makeMistakes(
+            fakerInstance.phone.number(),
+            selectedRegion,
+            true,
+            mistakesCount,
+            seed
+          ),
         };
       }
     },
-    [mistakesCount, selectedRegion]
+    [mistakesCount, selectedRegion, seed]
   );
 
   useEffect(() => {

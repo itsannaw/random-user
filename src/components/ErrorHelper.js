@@ -164,7 +164,8 @@ export function randomError(str, region, bool) {
   return randomError;
 }
 
-function makeMistakes(str, region, bool, count) {
+function makeMistakes(str, region, bool, count, seed) {
+  faker.seed(seed);
   let countMistake = Math.trunc(count);
   let prob = count - countMistake;
 
