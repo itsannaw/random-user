@@ -1,8 +1,7 @@
-# React + Vite
+Random User 
+--- 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An application for generating random fake user data with support for three regions and the ability to download the generated information.
+Additionally, the application allows for the generation of errors in fake data.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![image](https://github.com/itsannaw/random-user/assets/124448660/611d40a2-874f-4924-8524-83334d736c56)
